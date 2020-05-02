@@ -4,8 +4,8 @@ import EmployeeList from './EmployeeTable'
 import '../style.css';
 
 class EmployeeButton extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             show: false,
             name:'',
@@ -43,7 +43,7 @@ class EmployeeButton extends React.Component{
 
     handleSubmit =  (e) => {
     const {email,employeeId,department,doj,employeeList,name} = this.state;
-        e.preventDefault()
+         e.preventDefault()
         if(name !== '' && employeeId !== '' && department !== '' && doj !== '' && email !== '') {
          const formData={
                 name,
@@ -88,7 +88,7 @@ class EmployeeButton extends React.Component{
                     <h1>Add Employee Details</h1>
                 </div>
 
-                <form onSubmit={() => {console.log("submit")}}>
+                <form onSubmit={(e) => {e.preventDefault()}}>
                   <div>
                     <label htmlFor='name'>Name</label>
                     <input type='text' id='name' name='name' value={this.state.name} onChange={this.handleChange}/>
